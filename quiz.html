@@ -1,0 +1,338 @@
+<body onload="load()">
+<style>
+    #div1
+    {
+        height: 250px;
+        width: 500px;
+        padding-left: 4 0px;
+        border-radius: 20px;
+    }
+    #div
+    {
+        margin-left: 350px;
+    }
+    li
+    {
+        padding:5px;
+        color: white;
+        font-family: calibri;
+    }
+    ul
+    {
+        border-radius: 10px;
+    }
+    #l1
+    {
+        border-radius: 10px;
+        background-color: FB8618;
+        color: white;
+    }
+    #i2
+    {
+        margin-top: 10px;
+        border-radius: 10px;
+        background-color: FF3100;
+    }
+    #i3
+    {
+        margin-top: 10px;
+        border-radius: 10px;
+        background-color: A519E3;
+    }
+    #i4
+    {
+        margin-top: 10px;
+        border-radius: 10px;
+        background-color: F325C5;
+    }
+    h2
+    {
+        margin-left: 20px;
+        text-align: center;
+        background-color: B325FE;
+        border-radius: 40px;
+        box-shadow: 2px 2px 2px 2px black;  
+        height: 80px;
+        padding-top: 20px;
+        font-family: calibri;
+    }
+    h1
+    {
+        margin-left: 220px;
+        background-color: 16D815;
+        margin-right: 200px;
+        border-radius: 1000px;
+        align-content: center;
+        text-align: center;
+        text-shadow: 5px 5px 5px 5px red;
+    }
+    button
+    {
+        border-radius: 10px;
+        font-family: calibri;
+        margin-left: 50px;
+        font-size: 20px;
+        font-weight: 60px;
+    }
+    #b1
+    {
+        background-color: FF0303;
+    }
+    #b2
+    {
+        background-color: FF03E1;
+    }
+    #b3
+    {
+        background-color: FB03E8;
+    }
+    label:hover
+    {
+        border-radius: 20px;
+        box-shadow: 5px 5px 5px 5px black;
+    }
+    #rupee
+    {
+        background-color: FF03E1;
+        text-align: center;
+        height: 40px;
+        padding-top: 8spx;
+    }
+    #amount
+    {
+        text-align: center;
+        background-color: FF03FE;
+        color: black;
+        border-radius: 20px;
+        font-size: 30px;
+        margin-left: 180px;
+        margin-right: 150px;
+    }
+</style>
+<div id="div">
+<div id="div1">
+<h1 id="h1"></h1>
+<h3 id="rupee"></h3>
+<h3 id="amount"></h3>
+<h2 id="q">Here is Question</h2>
+<ol style="list-style-type: none;">
+    <marquee behavior="slide" scrollamount="40"><li id="l1">
+        <input type="radio" name="r" value="a"/>
+        <label onclick="sel('a')" id="a">Option 1</label>
+    </li>
+</marquee>
+<marquee behavior="slide" scrollamount="35">
+    <li id="i2">
+        <input type="radio" name="r" value="b" />
+        <label onclick="sel('b')" id="b">Option 2</label>
+    </li>
+</marquee>
+<marquee behavior="slide" scrollamount="30">
+    <li id="i3">
+        <input type="radio" name="r" value="c" />
+        <label onclick="sel('c')" id="c">Option 2</label>
+    </li>
+</marquee>
+<marquee behavior="slide" scrollamount="25">
+    <li id="i4">
+        <input type="radio" name="r" value="d" />
+        <label onclick="sel('d')" id="d">Option 4</label>
+    </li>
+</marquee>
+</ol>
+<button id="b1" onclick="nxt()">Next =></button>
+<button id="b2" onclick="del()">Clear selection</button>
+<button id="b3" onclick="sub()">Submit</button><br>
+<h3 id="hh" align="center"></h3>
+</div>
+</div>
+</body>
+<script>
+    const quizData=[
+        {
+            question:"which language is run on web browser ?",
+            a:"Java",
+            b:"Python",
+            c:"JavaScript",
+            d:"PHP",
+            correct:"c"
+        },
+        {
+            question:"CSS stands for ?",
+            a:"Central style sheets",
+            b:"Cascading Style Sheets",
+            c:"Cascading sheep sheets",
+            d:"None from given",
+            correct:"b"
+        },
+        {
+            question:"What does HTML stands for ?",
+            a:"Hyper Text Makeup Language",
+            b:"Hyper Text Markdown Language",
+            c:"Hyper Text Markup Language",
+            d:"None from given",
+            correct:"c"
+        },
+        {
+            question:"In which year EcmaScript is Launched ?",
+            a:"2015",
+            b:"2020",
+            c:"1999",
+            d:"2000",
+            correct:"a"
+        },
+        {
+            question:"From given which is known as Library of JavaScript ?",
+            a:"React.JS",
+            b:"Django",
+            c:"Spring-Boot",
+            d:"none from given",
+            correct:"a"
+        },
+        {
+            question:"Which one of the following also known as Conditional Expression",
+            a:"Alternative to if-else",
+            b:"Switch statement",
+            c:"If-then-else statement",
+            d:"immediate if",
+            correct:"c"
+        },
+        {
+            question:" In JavaScript, what is a block of statement?",
+            a:"Conditional block",
+            b:"block that combines a number of statements into a single compound statement",
+            c:"both conditional block and a single statement", 
+            d:"both conditional block and a single statement",
+            correct:"b"
+        },
+        {
+            question:"When interpreter encounters an empty statements, what it will do ?",
+            a:"Shows a warning",
+            b:"Prompts to complete the statement",
+            c:"Throws an error",
+            d:"Ignores the statements",
+            correct:"d"
+        },
+        {
+            question:" The function and var are known as ",
+            a:"Keywords",
+            b:"Prototypes",
+            c:"Data types",
+            d:"Declaration statements",
+            correct:"d"
+        },
+        {
+            question:"Which one of the following is the correct way for calling the JavaScript code ?",
+            a:"Preprocessor",
+            b:"Triggering Event",
+            c:"RMI",
+            d:"Function/Method",
+            correct:"d"
+        }
+    ];
+    let st;
+    let n=0;
+    let result=0;
+    let c=0;
+    let d=0;
+    let award=0;
+    let p;
+    function sel(n)
+    {
+        if(n=='a')
+            document.getElementsByTagName('input')[0].checked=true;
+        else
+            document.getElementsByTagName('input')[0].checked=false;
+        if(n=='b')
+            document.getElementsByTagName('input')[1].checked=true;
+        else
+            document.getElementsByTagName('input')[1].checked=false;
+        if(n=='c')
+            document.getElementsByTagName('input')[2].checked=true;
+        else
+            document.getElementsByTagName('input')[2].checked=false;
+        if(n=='d')
+            document.getElementsByTagName('input')[3].checked=true;
+        else
+            document.getElementsByTagName('input')[3].checked=false;
+    }
+    function del()
+    {
+        document.getElementsByTagName("input")[0].checked=false;
+        document.getElementsByTagName("input")[1].checked=false;
+        document.getElementsByTagName("input")[2].checked=false;
+        document.getElementsByTagName("input")[3].checked=false;
+    }
+    let show=()=>
+    {
+        let t=10;
+        p=1000;
+        p=p+d*1000;
+        document.getElementById('rupee').innerHTML="This Question for";
+        document.getElementById('amount').innerHTML=p+" ₹";   
+        document.getElementById("hh").innerHTML="Your Winning Amount is "+award;
+        document.getElementById("q").innerHTML=quizData[d].question;
+        document.getElementById("a").innerHTML=quizData[d].a;
+        document.getElementById("b").innerHTML=quizData[d].b;
+        document.getElementById("c").innerHTML=quizData[d].c;
+        document.getElementById("d").innerHTML=quizData[d].d;
+        st=setInterval(function(){
+            document.getElementById('h1').innerHTML=t;
+            t--;
+            if(t<0)
+                display();
+        },1000);
+    }
+    show();
+    function display()
+    {
+        clearInterval(st);
+        let i1=document.getElementsByTagName("input")[0].checked;
+        let i2=document.getElementsByTagName("input")[1].checked;
+        let i3=document.getElementsByTagName("input")[2].checked;
+        let i4=document.getElementsByTagName("input")[3].checked;
+        let ans;
+        if(i1==true)
+            ans='a';
+        else if(i2==true)
+            ans='b';
+        else if(i3==true)
+            ans='c';
+        else if(i4==true)
+            ans='d';
+        console.log(ans);
+        c++;
+        if(quizData[d].correct==ans)
+        {
+            result++;
+            award=award+p;
+            console.log(award);
+        }
+        if(c==quizData.length)
+        {
+            res();
+        }
+        else
+        {
+            document.getElementsByTagName("input")[0].checked=false;
+            document.getElementsByTagName("input")[1].checked=false;
+            document.getElementsByTagName("input")[2].checked=false;
+            document.getElementsByTagName("input")[3].checked=false;
+            d++;
+            show();
+        }
+    }
+    function res()
+    {
+        document.write(`<h1 align="center">your score is ${result} and you win rupees ${award}</h1>`);
+    }
+    function nxt()
+    {
+        display();
+    }
+    function sub()
+    {
+        display();
+        document.write(`<h1 align="center">your score is ${result} and you win rupees ${award}</h1>`);
+    }
+</script>
